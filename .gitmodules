@@ -106,11 +106,6 @@
 	path = libraries/dph
 	url = https://github.com/ghc/packages-dph.git
 	ignore = untracked
-[submodule "utils/haddock"]
-	path = utils/haddock
-	url = https://github.com/ghc/haddock.git
-	ignore = untracked
-	branch = ghc-head
 [submodule "nofib"]
 	path = nofib
 	url = https://github.com/ghc/nofib.git
