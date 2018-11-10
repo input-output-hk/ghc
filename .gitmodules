@@ -126,9 +126,6 @@
 [submodule "gmp-tarballs"]
 	path = libraries/integer-gmp/gmp/gmp-tarballs
 	url = https://github.com/ghc/gmp-tarballs.git
-[submodule ".arc-linters/arcanist-external-json-linter"]
-	path = .arc-linters/arcanist-external-json-linter
-	url = https://github.com/ghc/arcanist-external-json-linter.git
 [submodule "hadrian"]
 	path = hadrian
 	url = https://github.com/ghc/hadrian.git
