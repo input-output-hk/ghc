@@ -1,1 +1,9 @@
-Get-Help -Name Get-Process
+Set-PSDebug -Trace 1
+
+$env:PATH="$env:PATH;D:\ghc\ghc-8.2.2\bin;D:\stack"
+
+./bootstrap
+
+./configure
+
+make binary-dist
