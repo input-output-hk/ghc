@@ -1,5 +1,5 @@
 steps:
   - label: 'Windows'
-    command: 'C:\msys64\usr\bin\mintty.exe -w hide /bin/env MSYSTEM=MINGW64 /bin/bash -l .\.buildkite\build.sh'
+    command: 'Powershell.exe -executionpolicy remotesigned -File .\.buildkite\windows.ps1'
     agents:
       system: x86_64-win2016
