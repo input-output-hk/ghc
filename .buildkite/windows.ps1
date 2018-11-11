@@ -6,4 +6,4 @@ choco install msys2 -y
 
 refreshenv
 
-mintty.exe /bin/env MSYSTEM=MINGW64 /bin/bash -l build.sh
+C:\tools\msys64\usr\bin\mintty.exe /bin/env MSYSTEM=MINGW64 /bin/bash -l build.sh
