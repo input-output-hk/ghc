@@ -64,9 +64,6 @@ download_file() {
 
     if test "$verify" = "1"
     then
-	dos2unix mk/win32-tarballs.md5sum
-	echo "Checking against: ${MD5}"
-	echo "MD5 result is: ${MD52}"
         grep "${dest_file}$" mk/win32-tarballs.md5sum | md5sum -c - ||
             fail "ERROR: ${description} appears to be corrupted, please delete it and try again."
     fi

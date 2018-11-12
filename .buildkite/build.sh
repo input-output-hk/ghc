@@ -24,6 +24,8 @@ fi
 
 # make sure we are in the buildkite build checkout path
 cd "${BUILDKITE_BUILD_CHECKOUT_PATH}"
+# This file *must* have unix line endings; otherwise mk/get-win32-tarballs.sh will barf.
+dos2unix mk/win32-tarballs.md5sum
 # let's build!
 ./boot
 ./configure --enable-tarballs-autodownload
