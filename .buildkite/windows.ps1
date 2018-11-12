@@ -11,4 +11,4 @@ $env:Path.split(';')
 
 $env:PATH="D:\ghc\ghc-8.2.2\bin;C:\tools\msys64\usr\bin;\C:\tools\msys64\bin"
 
-env.exe MSYSTEM=MINGW64 bash.exe -l .\.buildkite\build.sh
+env.exe MSYSTEM=MINGW64 bash.exe -l (Get-Item -PATH ".\.buildkite\build.sh").FullName
