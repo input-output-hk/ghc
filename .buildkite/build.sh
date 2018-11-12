@@ -7,11 +7,6 @@ pacman -S --needed --noconfirm \
 arch=x86_64 # or i386
 bitness=64 # or 32
 
-# utf-8!
-#chcp.exe 65001
-
-locale
-
 export PATH=$PATH:/d/ghc/ghc-8.4.3/bin:/d/usr/local/bin
 
 # install ghc if not present
@@ -29,8 +24,8 @@ fi
 
 # make sure we are in the buildkite build checkout path
 cd "${BUILDKITE_BUILD_CHECKOUT_PATH}"
-mk/get-win32-tarballs.sh download ${arch}
 # let's build!
 ./boot
 ./configure --enable-tarballs-autodownload
-make binary-dist -j4
+make -j4
+make binary-dist

@@ -65,8 +65,6 @@ download_file() {
     if test "$verify" = "1"
     then
 	dos2unix mk/win32-tarballs.md5sum
-	MD5=$(grep "${dest_file}$" mk/win32-tarballs.md5sum)
-	MD52=$(md5sum "ghc-tarballs/mingw-w64/x86_64/mingw-w64-x86_64-crt-git-5.0.0.4795.e3d96cb1-1-any.pkg.tar.xz")
 	echo "Checking against: ${MD5}"
 	echo "MD5 result is: ${MD52}"
         grep "${dest_file}$" mk/win32-tarballs.md5sum | md5sum -c - ||
