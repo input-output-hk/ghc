@@ -6,4 +6,4 @@ choco install msys2 -y
 
 refreshenv
 
-env.exe MSYSTEM=MINGW64 bash.exe -l build.sh
+env.exe MSYSTEM=MINGW64 bash.exe -l ./build.sh
