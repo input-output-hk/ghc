@@ -29,6 +29,7 @@ fi
 
 # make sure we are in the buildkite build checkout path
 cd "${BUILDKITE_BUILD_CHECKOUT_PATH}"
+cat /mingw64/etc/config.site
 # let's build!
 ./boot
 ./configure --enable-tarballs-autodownload
