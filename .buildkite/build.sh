@@ -1,3 +1,7 @@
+# See
+# - https://ghc.haskell.org/trac/ghc/wiki/Building/Preparation/Windows
+# - https://ghc.haskell.org/trac/ghc/wiki/MakingReleases
+
 pacman -S --needed --noconfirm \
        curl git tar bsdtar binutils autoconf make xz \
        libtool automake python python2 p7zip patch \
@@ -24,10 +28,29 @@ fi
 
 # make sure we are in the buildkite build checkout path
 cd "${BUILDKITE_BUILD_CHECKOUT_PATH}"
+GHC_GIT_REV=$(git rev-parse --short=10 HEAD)
+# rewrite
+#  AC_INIT([The Glorious Glasgow Haskell Compilation System], [8.4.4], [glasgow-haskell-bugs@haskell.org], [ghc-AC_PACKAGE_VERSION])
+# into
+#  AC_INIT([The Glorious Glasgow Haskell Compilation System], [8.4.4-iohk$GHC_GIT_REV], [glasgow-haskell-bugs@haskell.org], [ghc-AC_PACKAGE_VERSION])
+sed -i -e "s/AC_INIT(\(\[[^,]*\], \)\[\([^,]*\)\]\(,.*\))/AC_INIT(\1[\2-iohk${GHC_GIT_REV}]\3)/g" configure.ac
+# set RELEASE=YES
+sed -i -e 's/{RELEASE=NO}/{RELEASE=YES}/g' configure.ac
 # This file *must* have unix line endings; otherwise mk/get-win32-tarballs.sh will barf.
 dos2unix mk/win32-tarballs.md5sum
 # let's build!
 ./boot
-./configure --silent --enable-tarballs-autodownload
-#make --silent -j4 V=0
-make --silent -j4 V=0 binary-dist
+cat > mk/build.mk <<EOF
+V=1
+HADDOCK_DOCS=NO
+HSCOLOUR_SRCS=NO
+BUILD_SPHINX_HTML=NO
+BUILD_SPHINX_PDF=NO
+BeConservative=YES
+EOF
+./configure --silent --enable-tarballs-autodownload 2>&1 | tee ../ghc-${GHC_GIT_REV}-conf.log
+make --silent -j4 V=0                               2>&1 | tee ../ghc-${GHC_GIT_REV}-make.log
+make --silent -j4 V=0 binary-dist                   2>&1 | tee ../ghc-${GHC_GIT_REV}-bd.log
+
+mkdir -p /d/ghcs
+mv ghc-*.tar.xz /d/ghcs/
