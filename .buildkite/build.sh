@@ -8,7 +8,9 @@ arch=x86_64 # or i386
 bitness=64 # or 32
 
 # utf-8!
-chcp 65001
+#chcp.exe 65001
+
+locale
 
 export PATH=$PATH:/d/ghc/ghc-8.4.3/bin:/d/usr/local/bin
 
