@@ -1,5 +1,6 @@
 Set-PSDebug -Trace 1
 
+(Get-Item -PATH ".\.buildkite\build.sh").FullName
 
 choco install msys2 -y
 
