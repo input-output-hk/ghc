@@ -2,7 +2,7 @@ pacman -S --needed --noconfirm \
        curl git tar bsdtar binutils autoconf make xz \
        libtool automake python python2 p7zip patch \
        ca-certificates mingw-w64-$(uname -m)-gcc \
-       mingw-w64-$(uname -m)-tools-git unix2dos
+       mingw-w64-$(uname -m)-tools-git dos2unix
 
 arch=x86_64 # or i386
 bitness=64 # or 32
