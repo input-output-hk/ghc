@@ -28,6 +28,6 @@ cd "${BUILDKITE_BUILD_CHECKOUT_PATH}"
 dos2unix mk/win32-tarballs.md5sum
 # let's build!
 ./boot
-./configure --enable-tarballs-autodownload
-make -j4
-make binary-dist
+./configure --silent --enable-tarballs-autodownload
+make --silent -j4 V=0
+make --silent V=0 binary-dist
