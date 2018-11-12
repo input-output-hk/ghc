@@ -33,7 +33,9 @@ GHC_GIT_REV=$(git rev-parse --short=10 HEAD)
 #  AC_INIT([The Glorious Glasgow Haskell Compilation System], [8.4.4], [glasgow-haskell-bugs@haskell.org], [ghc-AC_PACKAGE_VERSION])
 # into
 #  AC_INIT([The Glorious Glasgow Haskell Compilation System], [8.4.4-iohk$GHC_GIT_REV], [glasgow-haskell-bugs@haskell.org], [ghc-AC_PACKAGE_VERSION])
-sed -i -e "s/AC_INIT(\(\[[^,]*\], \)\[\([^,]*\)\]\(,.*\))/AC_INIT(\1[\2-iohk${GHC_GIT_REV}]\3)/g" configure.ac
+# DOES NOT WORK! GHC can't deal with -... non INTEGER
+# sed -i -e "s/AC_INIT(\(\[[^,]*\], \)\[\([^,]*\)\]\(,.*\))/AC_INIT(\1[\2-iohk${GHC_GIT_REV}]\3)/g" configure.ac
+
 # set RELEASE=YES
 sed -i -e 's/{RELEASE=NO}/{RELEASE=YES}/g' configure.ac
 # This file *must* have unix line endings; otherwise mk/get-win32-tarballs.sh will barf.
@@ -52,5 +54,5 @@ EOF
 make --silent -j4 V=0                               2>&1 | tee ../ghc-${GHC_GIT_REV}-make.log
 make --silent -j4 V=0 binary-dist                   2>&1 | tee ../ghc-${GHC_GIT_REV}-bd.log
 
-mkdir -p /d/ghcs
-mv ghc-*.tar.xz /d/ghcs/
+mkdir -p /d/ghcs/${GHC_GIT_REV}
+mv ghc-*.tar.xz /d/ghcs/${GHC_GIT_REV}/
