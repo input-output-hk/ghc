@@ -7,6 +7,9 @@ pacman -S --needed --noconfirm \
 arch=x86_64 # or i386
 bitness=64 # or 32
 
+# utf-8!
+chcp 65001
+
 export PATH=$PATH:/d/ghc/ghc-8.4.3/bin:/d/usr/local/bin
 
 # install ghc if not present
