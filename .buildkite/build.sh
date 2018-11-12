@@ -26,5 +26,5 @@ fi
 cd "${BUILDKITE_BUILD_CHECKOUT_PATH}"
 # let's build!
 ./boot
-./configure
+./configure --enable-tarballs-autodownload
 make binary-dist -j4
