@@ -8,6 +8,7 @@ pacman -S --needed --noconfirm \
 # make sure we are in the buildkite build checkout path
 cd "${BUILDKITE_BUILD_CHECKOUT_PATH}"
 # let's build!
-./boot
-./configure
-make binary-dist -j4
+ls /mingw64/etc/
+#./boot
+#./configure
+#make binary-dist -j4
