@@ -29,5 +29,5 @@ dos2unix mk/win32-tarballs.md5sum
 # let's build!
 ./boot
 ./configure --silent --enable-tarballs-autodownload
-make --silent -j4 V=0
-make --silent V=0 binary-dist
+#make --silent -j4 V=0
+make --silent -j4 V=0 binary-dist
