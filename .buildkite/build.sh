@@ -29,6 +29,8 @@ fi
 
 # make sure we are in the buildkite build checkout path
 cd "${BUILDKITE_BUILD_CHECKOUT_PATH}"
+
+grep "mingw-w64-x86_64-crt-git-5.0.0.4795.e3d96cb1-1-any.pkg.tar.xz" mk/win32-tarballs.md5sum
 # let's build!
 ./boot
 ./configure --enable-tarballs-autodownload
