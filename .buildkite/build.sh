@@ -54,5 +54,6 @@ EOF
 make --silent -j4 V=0                               2>&1 | tee ../ghc-${GHC_GIT_REV}-make.log
 make --silent -j4 V=0 binary-dist                   2>&1 | tee ../ghc-${GHC_GIT_REV}-bd.log
 
-mkdir -p /d/ghcs/${GHC_GIT_REV}
-mv ghc-*.tar.xz /d/ghcs/${GHC_GIT_REV}/
+cd bindistprep/ghc*
+
+tar -cJf ../../ghc.tar.xz .
